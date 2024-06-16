@@ -1358,14 +1358,14 @@ struct AssetData {
 
 // Double-check that the structs we write to disk have the proper size
 // Errors in these lines mean that the struct is the wrong shape
-static_assert(sizeof(PrestType) == 15);
-static_assert(sizeof(Equipment) == 60);
-static_assert(sizeof(MissionType) == 43);
-static_assert(sizeof(Astros) == 64);
-static_assert(sizeof(PastInfo) == 84);
-static_assert(sizeof(BuzzData) == 15641);
-static_assert(sizeof(MisEval) == 40);
-static_assert(sizeof(Players) == 39108);
+static_assert(sizeof(PrestType) == 15, "invalid size of PrestType");
+static_assert(sizeof(Equipment) == 60, "invalid size of Equipment");
+static_assert(sizeof(MissionType) == 43, "invalid size of MissionType");
+static_assert(sizeof(Astros) == 64, "invalid size of Astros");
+static_assert(sizeof(PastInfo) == 84, "invalid size of PastInfo");
+static_assert(sizeof(BuzzData) == 15641, "invalid size of BuzzData");
+static_assert(sizeof(MisEval) == 40, "invalid size of MisEval");
+static_assert(sizeof(Players) == 39108, "invalid size of Players");
 
 #endif // RIS_DATA_H
 
