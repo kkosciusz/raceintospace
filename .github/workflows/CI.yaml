@@ -9,7 +9,7 @@ on: [push, workflow_dispatch]
 jobs:
   job:
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         include:
           - os: windows
@@ -63,7 +63,7 @@ jobs:
       - name: Install dependencies on linux
         if: ${{ startsWith(matrix.os, 'ubuntu') && !contains(matrix.preset, 'vcpkg') }}
         id: linux-deps
-        run: sudo apt-get install libsdl1.2-dev libcereal-dev libphysfs-dev libboost-dev libpng-dev libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libprotobuf-dev protobuf-compiler
+        run: sudo apt-get install libsdl1.2-dev libcereal-dev libphysfs-dev libboost-dev libpng-dev libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libprotobuf-dev libfmt-dev protobuf-compiler
 
       - name: Run CMake and CPack
         uses: lukka/run-cmake@v10

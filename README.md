@@ -78,12 +78,12 @@ We rely on the operating system to provide most of the dependencies. If you're
 on a Debian-based system, you can get everything with:
 
     sudo apt-get install cmake libsdl1.2-dev libboost-dev libpng-dev \
-        libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev \
+        libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libfmt-dev \
         libphysfs-dev libcereal-dev libprotobuf-dev protobuf-compiler
 
 Or enter this all on one line:
 
-    sudo apt-get install cmake libsdl1.2-dev libboost-dev libpng-dev libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libphysfs-dev libcereal-dev libprotobuf-dev protobuf-compiler
+    sudo apt-get install cmake libsdl1.2-dev libboost-dev libpng-dev libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libfmt-dev libphysfs-dev libcereal-dev libprotobuf-dev protobuf-compiler
 
 If you don't already have git installed, you'll also have to run:
 
@@ -97,7 +97,7 @@ You may also need to run (especially if you get "No CMAKE_CXX_COMPILER could be 
 
 If you are on a Fedora-based system, you can get everything with:
 
-    $ sudo dnf install cmake gcc-c++ SDL-devel protobuf-devel boost-devel libogg-devel libvorbis-devel libtheora-devel jsoncpp-devel physfs-devel libpng-devel cereal-devel
+    $ sudo dnf install cmake gcc-c++ SDL-devel protobuf-devel boost-devel libogg-devel libvorbis-devel libtheora-devel libfmt-devel jsoncpp-devel physfs-devel libpng-devel cereal-devel 
 
 ### Build with system dependencies
 
