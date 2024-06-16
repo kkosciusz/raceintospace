@@ -524,7 +524,7 @@ size_t ImportSPath(FILE *fin, struct AnimationStep &target)
         Swap16bit(target.xPut);
         Swap16bit(target.yPut);
         Swap16bit(target.iHold);
-        Swap32bit(target.Scale);
+        SwapFloat(target.Scale);
     }
 
     return (read ? 1 : 0);

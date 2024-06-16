@@ -1708,8 +1708,8 @@ void LegacyLoad(SaveFileHdr header, FILE *fin, size_t fileLength)
     bool endianSwap = (dataSize != legacySize && dataSize != 31663);
 
     if (endianSwap) {
-        compSize = _Swap16bit(compSize);
-        dataSize = _Swap16bit(dataSize);
+        Swap16bit(compSize);
+        Swap16bit(dataSize);
 
         if (dataSize !=  legacySize && dataSize != 31663) {
             // TODO: Feels like BadFileType() should be launched by
@@ -1756,7 +1756,7 @@ void LegacyLoad(SaveFileHdr header, FILE *fin, size_t fileLength)
 
     // Swap Players' Data
     if (endianSwap) {
-        _SwapGameDat();
+        SwapGameDat();
     }
 
     // Read the Replay Data
@@ -1769,7 +1769,7 @@ void LegacyLoad(SaveFileHdr header, FILE *fin, size_t fileLength)
 
         for (int j = 0; j < MAX_REPLAY_ITEMS; j++) {
             for (int k = 0; k < r->Qty; k++) {
-                r[j].Off[k] = _Swap16bit(r[j].Off[k]);
+                Swap16bit(r[j].Off[k]);
             }
         }
     }
@@ -1812,8 +1812,8 @@ void LegacyLoad(SaveFileHdr header, FILE *fin, size_t fileLength)
             OLDNEWS *on = (OLDNEWS *) load_buffer + (j * sizeof(OLDNEWS));
 
             if (on->offset) {
-                on->offset = _Swap32bit(on->offset);
-                on->size = _Swap16bit(on->size);
+                Swap32bit(on->offset);
+                Swap16bit(on->size);
             }
         }
     }
