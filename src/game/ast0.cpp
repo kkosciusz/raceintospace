@@ -39,7 +39,6 @@
 #include "endianness.h"
 #include "filesystem.h"
 
-#include <boost/format.hpp>
 #include <iostream>
 #include <sstream>
 

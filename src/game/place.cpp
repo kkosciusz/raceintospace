@@ -26,7 +26,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <boost/format.hpp>
+#include <fmt/core.h>
 
 #include "display/image.h"
 #include "display/graphics.h"
@@ -366,7 +366,7 @@ void BigHardMe(char plr, int x, int y, char hw, char unit, char sh)
     if (sh == 0) {
         int index = (plr * 32) + (hw * 8) + unit;
 
-        std::string filename((boost::format("images/rdfull.but.%1%.png") % index).str());
+        const std::string filename = fmt::format("images/rdfull.but.{}.png", index);
         std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette(32, 2 + 33);
@@ -403,7 +403,7 @@ void BigHardMe(char plr, int x, int y, char hw, char unit, char sh)
         name[3] = 0x30 + unit;      // poor man's itoa()
         name[4] = '\x00';           // terminator
 
-        std::string filename((boost::format("images/liftoff.abz.%1%.png") % name).str());
+        const std::string filename = fmt::format("images/liftoff.abz.{}.png", name);
         std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette(32, 2 + 63);

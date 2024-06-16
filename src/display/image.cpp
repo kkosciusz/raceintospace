@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <boost/format.hpp>
+#include <fmt/core.h>
 #include <png.h>
 #include <zlib.h>
 
@@ -13,6 +13,13 @@
 #include "surface.h"
 #include "palettized_surface.h"
 
+namespace {
+
+inline std::string formatted_libpng_version(int version) {
+    return fmt::format("{}.{}.{}", version / 10000, (version / 100) % 100, version % 100);
+}
+
+}
 
 namespace display
 {
@@ -151,8 +158,6 @@ PalettizedSurface *readPalettizedPNG(const void *buffer, size_t length)
     }
 }
 
-
-#define formatted_libpng_version(version) ((boost::format("%1%.%2%.%3%") % (version / 10000) % ((version / 100) % 100) % (version % 100)).str())
 
 std::string libpng_runtime_version()
 {
