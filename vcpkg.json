@@ -1,6 +1,5 @@
 {
   "dependencies": [
-    "boost-algorithm",
     "boost-format",
     "libpng",
     "zlib",
