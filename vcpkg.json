@@ -2,7 +2,6 @@
   "dependencies": [
     "boost-algorithm",
     "boost-format",
-    "boost-foreach",
     "libpng",
     "zlib",
     "cereal",
