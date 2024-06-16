@@ -288,7 +288,7 @@ const char *code_names[] = {
 };
 
 struct DisplayContext {
-    boost::shared_ptr<display::LegacySurface> intel;
+    std::shared_ptr<display::LegacySurface> intel;
 };
 
 
@@ -1190,7 +1190,7 @@ void HarIntel(char plr, char acc)
 void DrawIntelBackground()
 {
     fill_rectangle(153, 32, 310, 131, 0);
-    boost::shared_ptr<display::PalettizedSurface> background(Filesystem::readImage("images/intel_background.png"));
+    std::shared_ptr<display::PalettizedSurface> background(Filesystem::readImage("images/intel_background.png"));
     background->exportPalette();
     display::graphics.screen()->draw(background, 153, 32);
 }
@@ -1228,7 +1228,7 @@ void DrawIntelImage(char plr, char poff)
     // These images use transparent backgrounds, overlaid on the
     // Intel background. It won't have the right appearance, but
     // it's preferable to crashing.
-    boost::shared_ptr<display::PalettizedSurface> image;
+    std::shared_ptr<display::PalettizedSurface> image;
 
     try {
         image = Filesystem::readImage(filename);
@@ -1717,12 +1717,12 @@ void Bre(char plr)
  *
  * \throws runtime_error  if Filesystem is unable to load the sprite.
  */
-boost::shared_ptr<display::LegacySurface> LoadCIASprite()
+std::shared_ptr<display::LegacySurface> LoadCIASprite()
 {
-    boost::shared_ptr<display::LegacySurface> surface(new display::LegacySurface(display::graphics.WIDTH, display::graphics.HEIGHT));
+    std::shared_ptr<display::LegacySurface> surface(new display::LegacySurface(display::graphics.WIDTH, display::graphics.HEIGHT));
 
     std::string filename("images/cia.but.0.png");
-    boost::shared_ptr<display::PalettizedSurface> sprite =
+    std::shared_ptr<display::PalettizedSurface> sprite =
         Filesystem::readImage(filename);
 
     // try {

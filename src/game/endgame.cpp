@@ -22,9 +22,8 @@
 
 #include "endgame.h"
 
+#include <memory>
 #include <string>
-
-#include <boost/shared_ptr.hpp>
 
 #include "display/graphics.h"
 #include "display/surface.h"
@@ -416,7 +415,7 @@ void Load_LenFlag(char win)
         y = 0;
     }
 
-    boost::shared_ptr<display::PalettizedSurface> image(
+    std::shared_ptr<display::PalettizedSurface> image(
         Filesystem::readImage(filename));
     image->exportPalette(128, 255);
     display::graphics.screen()->draw(image, x, y);
@@ -429,7 +428,7 @@ void Draw_NewEnd(char win)
     FadeOut(2, 10, 0, 0);
     display::graphics.screen()->clear();
 
-    boost::shared_ptr<display::PalettizedSurface> winner(Filesystem::readImage("images/winner.but.0.png"));
+    std::shared_ptr<display::PalettizedSurface> winner(Filesystem::readImage("images/winner.but.0.png"));
     winner->exportPalette(0, 128);
     display::graphics.screen()->draw(winner, 0, 0);
 
@@ -1090,7 +1089,7 @@ EndPict(int x, int y, char poff, unsigned char coff)
     char filename[128];
     snprintf(filename, sizeof(filename),
              "images/endgame.but.%d.png", (int) poff);
-    boost::shared_ptr<display::PalettizedSurface> endgame(
+    std::shared_ptr<display::PalettizedSurface> endgame(
         Filesystem::readImage(filename));
 
     endgame->exportPalette(coff, coff + 127);  // 128-color palette
@@ -1125,7 +1124,7 @@ LoserPict(char poff, unsigned char coff)
     char filename[128];
     snprintf(filename, sizeof(filename),
              "images/loser.but.%d.png", (int) poff);
-    boost::shared_ptr<display::PalettizedSurface> image(
+    std::shared_ptr<display::PalettizedSurface> image(
         Filesystem::readImage(filename));
 
     image->exportPalette(coff, coff + 127);  // 128-color palette

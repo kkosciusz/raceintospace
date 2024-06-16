@@ -264,7 +264,7 @@ void DrawRush(char plr)
 {
     FadeOut(2, 10, 0, 0);
 
-    boost::shared_ptr<display::PalettizedSurface> launchPads(Filesystem::readImage("images/lpads.but.1.png"));
+    std::shared_ptr<display::PalettizedSurface> launchPads(Filesystem::readImage("images/lpads.but.1.png"));
     launchPads->exportPalette();
 
     display::graphics.screen()->clear();

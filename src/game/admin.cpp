@@ -32,9 +32,10 @@
 
 #include "admin.h"
 
+#include <algorithm>
 #include <cassert>
 #include <cctype>
-#include <algorithm>
+#include <memory>
 #include <vector>
 
 #include "display/graphics.h"
@@ -1193,7 +1194,7 @@ int FutureCheck(char plr, char type)
 
     PortPal(plr);
 
-    boost::shared_ptr<display::PalettizedSurface> launchPads(Filesystem::readImage("images/lpads.but.1.png"));
+    std::shared_ptr<display::PalettizedSurface> launchPads(Filesystem::readImage("images/lpads.but.1.png"));
 
     if (type == 0) {
         helpText = "i010";

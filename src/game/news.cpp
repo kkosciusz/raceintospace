@@ -1094,7 +1094,7 @@ ShowEvt(char plr, char crd)
              "images/news/news.cdr.%s.%d.png",
              plr == 0 ? "usa" : "ussr", (int) crd);
 
-    boost::shared_ptr<display::PalettizedSurface> image;
+    std::shared_ptr<display::PalettizedSurface> image;
 
     try {
         image = Filesystem::readImage(filename);

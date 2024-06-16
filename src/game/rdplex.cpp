@@ -136,7 +136,7 @@ void LoadVABPalette(const char plr)
     char filename[128];
     snprintf(filename, sizeof(filename), "images/vab.img.%d.png", plr);
 
-    boost::shared_ptr<display::PalettizedSurface> sprite(
+    std::shared_ptr<display::PalettizedSurface> sprite(
         Filesystem::readImage(filename));
 
     sprite->exportPalette();
@@ -266,13 +266,8 @@ void DrawRDButtons(char plr, int maxButton)
     char filename[128];
     snprintf(filename, sizeof(filename), "images/rd_men.%d.png", plr);
 
-    boost::shared_ptr<display::PalettizedSurface> rd_men;
-    rd_men = boost::shared_ptr<display::PalettizedSurface>(
-                 Filesystem::readImage(filename));
-
-    boost::shared_ptr<display::PalettizedSurface> shadow_men;
-    shadow_men = boost::shared_ptr<display::PalettizedSurface>(
-                     Filesystem::readImage("images/rd_men.none.png"));
+    auto rd_men = Filesystem::readImage(filename);
+    auto shadow_men = Filesystem::readImage("images/rd_men.none.png");
 
     for (int i = 0; i <= maxButton; i++) {
         display::graphics.screen()->draw(

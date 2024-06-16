@@ -94,7 +94,7 @@ void DrawControl(char plr)
     char filename[128];
     snprintf(filename, sizeof(filename), "images/control.img.%d.png", plr);
 
-    boost::shared_ptr<display::PalettizedSurface> background(
+    std::shared_ptr<display::PalettizedSurface> background(
         Filesystem::readImage(filename));
     background->exportPalette();
     display::graphics.screen()->draw(background, 0, 0);

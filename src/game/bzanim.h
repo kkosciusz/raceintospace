@@ -1,10 +1,9 @@
 #ifndef BZ_ANIMATION_H
 #define BZ_ANIMATION_H
 
+#include <memory>
 #include <stdint.h>
 #include <vector>
-
-#include <boost/shared_ptr.hpp>
 
 #include "display/palette.h"
 
@@ -21,7 +20,7 @@
 class BZAnimation
 {
 public:
-    typedef boost::shared_ptr<BZAnimation> Ptr;
+    typedef std::shared_ptr<BZAnimation> Ptr;
 
     static Ptr load(const char *file, const char *id, int x, int y);
 

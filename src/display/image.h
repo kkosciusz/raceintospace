@@ -5,8 +5,6 @@
 #include <string>
 #include <SDL.h>
 
-#include <boost/shared_ptr.hpp>
-
 #include "graphics.h"
 #include "palette.h"
 #include "palettized_surface.h"

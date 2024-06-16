@@ -412,7 +412,7 @@ void PadPict(char poff)
     char filename[128];
     snprintf(filename, sizeof(filename),
              "images/lfacil.but.%d.png", (int) poff);
-    boost::shared_ptr<display::PalettizedSurface> image(
+    std::shared_ptr<display::PalettizedSurface> image(
         Filesystem::readImage(filename));
 
     image->exportPalette();

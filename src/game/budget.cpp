@@ -146,7 +146,7 @@ void DrawBudget(char player, char *pStatus)
     {
         char filename[128];
         snprintf(filename, sizeof(filename), "images/budget_splash.%d.png", player);
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette();
         display::graphics.screen()->draw(image, 245, 4);
@@ -156,7 +156,7 @@ void DrawBudget(char player, char *pStatus)
     for (i = 0; i < 4; i++) {
         char filename[128];
         snprintf(filename, sizeof(filename), "images/budget_button.%d.png", i);
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette();
         display::graphics.screen()->draw(image, 134, 141 + i * 14);

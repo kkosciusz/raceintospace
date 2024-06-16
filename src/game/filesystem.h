@@ -3,7 +3,7 @@
 
 #include <list>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "file.h"
 #include "display/image.h"
@@ -23,12 +23,12 @@ public:
     static std::list<std::string> enumerate(const std::string &directory);
     static bool unlink(const std::string &filename);
 
-    static boost::shared_ptr<File> open(const std::string &filename);
+    static std::shared_ptr<File> open(const std::string &filename);
 
-    static boost::shared_ptr<File> openWrite(const std::string &filename);
+    static std::shared_ptr<File> openWrite(const std::string &filename);
 
     static void readToBuffer(const std::string &filename, void *buffer, uint32_t length, uint32_t offset = 0);
-    static boost::shared_ptr<display::PalettizedSurface> readImage(const std::string &filename);
+    static std::shared_ptr<display::PalettizedSurface> readImage(const std::string &filename);
     static void addPath(const char *s);
 };
 

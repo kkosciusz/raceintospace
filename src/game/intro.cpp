@@ -166,7 +166,7 @@ void Credits(void)
 
     FadeOut(2, 30, 0, 0);
 
-    boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/first.img.3.png"));
+    std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/first.img.3.png"));
 
     image->exportPalette();
 
@@ -226,7 +226,7 @@ void Introd(void)
         char filename[64];
         snprintf(filename, sizeof(filename), "images/first.img.%i.png", k);
 
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette();
         display::graphics.screen()->draw(image, 0, 0);
@@ -258,7 +258,7 @@ void NextTurn(char plr)
     helpText = "i000";
     keyHelpText = "k000";
 
-    boost::shared_ptr<display::PalettizedSurface> countrySeals(Filesystem::readImage("images/turn.but.0.png"));
+    std::shared_ptr<display::PalettizedSurface> countrySeals(Filesystem::readImage("images/turn.but.0.png"));
     countrySeals->exportPalette();
 
     display::graphics.screen()->clear();

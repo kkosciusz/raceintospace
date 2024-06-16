@@ -317,7 +317,7 @@ void PresPict(char image)
     char filename[128];
     snprintf(filename, sizeof(filename), "images/presr.but.%d.png", image);
 
-    boost::shared_ptr<display::PalettizedSurface> portrait(
+    std::shared_ptr<display::PalettizedSurface> portrait(
         Filesystem::readImage(filename));
     portrait->exportPalette(32, 255);
     display::graphics.screen()->draw(portrait, 183, 33);

@@ -602,7 +602,7 @@ void MisAnn(char plr, char pad)
 
 void AI_Begin(char plr)
 {
-    boost::shared_ptr<display::PalettizedSurface> countrySeals(Filesystem::readImage("images/turn.but.0.png"));
+    std::shared_ptr<display::PalettizedSurface> countrySeals(Filesystem::readImage("images/turn.but.0.png"));
     countrySeals->exportPalette();
 
     display::graphics.screen()->clear();

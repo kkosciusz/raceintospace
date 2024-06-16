@@ -28,8 +28,7 @@
 
 #include "spot.h"
 
-#include <boost/shared_ptr.hpp>
-
+#include <memory>
 #include <string>
 
 #include "display/graphics.h"
@@ -78,7 +77,7 @@ namespace
 const int MAX_X = display::Graphics::WIDTH - 1;
 const int MAX_Y = display::Graphics::HEIGHT - 1;
 
-boost::shared_ptr<display::LegacySurface> portViewBuffer;
+std::shared_ptr<display::LegacySurface> portViewBuffer;
 bool SUSPEND = true;
 bool isTrackPlaying = false;
 int16_t stepCount;     // stepCount is the number of steps
@@ -149,7 +148,7 @@ void SpotInit()
     int height = display::graphics.legacyScreen()->height();
     int width = display::graphics.legacyScreen()->width();
 
-    portViewBuffer = boost::shared_ptr<display::LegacySurface>(
+    portViewBuffer = std::shared_ptr<display::LegacySurface>(
                          new display::LegacySurface(width, height));
     portViewBuffer->palette().copy_from(
         display::graphics.legacyScreen()->palette());

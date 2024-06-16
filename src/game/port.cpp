@@ -28,8 +28,7 @@
 #include "port.h"
 
 #include <cstdio>
-
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "display/graphics.h"
 #include "display/surface.h"
@@ -135,7 +134,7 @@ MOBJ MObj[35];
 char HotKeyList[] = "AIMRPVCQETB\0";
 
 int FCtr;
-boost::shared_ptr<display::PalettizedSurface> flaggy;
+std::shared_ptr<display::PalettizedSurface> flaggy;
 int16_t Vab_Spot;
 
 // Unnamed namespace for local globals & function prototypes.
@@ -177,7 +176,7 @@ void WaveFlagSetup(char plr)
 {
     char filename[256];
     snprintf(filename, sizeof(filename), "images/flag.seq.%d.png", plr);
-    flaggy = boost::shared_ptr<display::PalettizedSurface>(Filesystem::readImage(filename));
+    flaggy = std::shared_ptr<display::PalettizedSurface>(Filesystem::readImage(filename));
 }
 
 void WaveFlagDel(void)
@@ -287,7 +286,7 @@ void DrawSpaceport(char plr)
         const char *filename =
             (plr == 0 ? "images/usa_port.dat.0.png" :
              "images/sov_port.dat.0.png");
-        boost::shared_ptr<display::PalettizedSurface> image(
+        std::shared_ptr<display::PalettizedSurface> image(
             Filesystem::readImage(filename));
         image->exportPalette();
         display::graphics.screen()->draw(image, 0, 0);
