@@ -1358,15 +1358,14 @@ struct AssetData {
 
 // Double-check that the structs we write to disk have the proper size
 // Errors in these lines mean that the struct is the wrong shape
-#include <boost/static_assert.hpp>
-BOOST_STATIC_ASSERT(sizeof(PrestType) == 15);
-BOOST_STATIC_ASSERT(sizeof(Equipment) == 60);
-BOOST_STATIC_ASSERT(sizeof(MissionType) == 43);
-BOOST_STATIC_ASSERT(sizeof(Astros) == 64);
-BOOST_STATIC_ASSERT(sizeof(PastInfo) == 84);
-BOOST_STATIC_ASSERT(sizeof(BuzzData) == 15641);
-BOOST_STATIC_ASSERT(sizeof(MisEval) == 40);
-BOOST_STATIC_ASSERT(sizeof(Players) == 39108);
+static_assert(sizeof(PrestType) == 15);
+static_assert(sizeof(Equipment) == 60);
+static_assert(sizeof(MissionType) == 43);
+static_assert(sizeof(Astros) == 64);
+static_assert(sizeof(PastInfo) == 84);
+static_assert(sizeof(BuzzData) == 15641);
+static_assert(sizeof(MisEval) == 40);
+static_assert(sizeof(Players) == 39108);
 
 #endif // RIS_DATA_H
 
