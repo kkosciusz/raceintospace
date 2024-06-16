@@ -44,7 +44,7 @@
 #include "hardware_buttons.h"
 
 struct DisplayContext {
-    boost::shared_ptr<display::LegacySurface> intel;
+    std::shared_ptr<display::LegacySurface> intel;
 };
 
 void DrawHardef(char plr);

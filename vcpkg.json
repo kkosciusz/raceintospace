@@ -3,7 +3,6 @@
     "boost-algorithm",
     "boost-format",
     "boost-foreach",
-    "boost-smart-ptr",
     "libpng",
     "zlib",
     "cereal",

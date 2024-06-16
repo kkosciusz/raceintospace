@@ -21,11 +21,11 @@
 #include "place.h"
 
 #include <cassert>
+#include <memory>
 #include <stdexcept>
 #include <string>
 
 #include <boost/format.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/algorithm/string/join.hpp>
 
 #include "display/image.h"
@@ -85,9 +85,9 @@ int MainMenuChoice()
 
     {
 #ifdef ALLOW_PBEM
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/main_menu.png"));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/main_menu.png"));
 #else
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/main_menu_4slot.png"));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/main_menu_4slot.png"));
 #endif
 
         image->exportPalette();
@@ -174,7 +174,7 @@ int BChoice(int plr, int qty, char *Name, char *Imx, bool mayEscape)
 
         snprintf(filename, sizeof(filename), "images/portbut.but.%d.png",
                  (int) Imx[i]);
-        boost::shared_ptr<display::PalettizedSurface> icon(
+        std::shared_ptr<display::PalettizedSurface> icon(
             Filesystem::readImage(filename));
         display::graphics.screen()->draw(icon, 24, starty + 1 + 23 * i);
     }
@@ -249,7 +249,7 @@ void PatchMe(char plr, int x, int y, char prog, char poff)
     snprintf(filename, sizeof(filename), "images/patches.but.%d.png",
              (int) patchNum);
 
-    boost::shared_ptr<display::PalettizedSurface> patch(
+    std::shared_ptr<display::PalettizedSurface> patch(
         Filesystem::readImage(filename));
     patch->exportPalette(32, 32 + (32 - 1));  // [32, 64) color palette
     display::graphics.screen()->draw(patch, x, y);
@@ -277,13 +277,13 @@ void AstFaces(char plr, int x, int y, char face)
     snprintf(filename, sizeof(filename), "images/faces.but.%d.png",
              (int)face);
 
-    boost::shared_ptr<display::PalettizedSurface> icon(
+    std::shared_ptr<display::PalettizedSurface> icon(
         Filesystem::readImage(filename));
     icon->exportPalette(64, 64 + 31);  // Palette space [64, 96)
 
     snprintf(filename, sizeof(filename), "images/faces.but.%d.png",
              (int) plr + 85);
-    boost::shared_ptr<display::PalettizedSurface> helmet(
+    std::shared_ptr<display::PalettizedSurface> helmet(
         Filesystem::readImage(filename));
 
     int fx, fy;  // Position of face within the helmet
@@ -342,7 +342,7 @@ void SmHardMe(char plr, int x, int y, char prog, char planet,
 
     char filename[128];
     snprintf(filename, sizeof(filename), "images/mhist.but.%d.png", patch);
-    boost::shared_ptr<display::PalettizedSurface> image(
+    std::shared_ptr<display::PalettizedSurface> image(
         Filesystem::readImage(filename));
 
     image->exportPalette(coff, coff + 63);
@@ -367,7 +367,7 @@ void BigHardMe(char plr, int x, int y, char hw, char unit, char sh)
         int index = (plr * 32) + (hw * 8) + unit;
 
         std::string filename((boost::format("images/rdfull.but.%1%.png") % index).str());
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette(32, 2 + 33);
         display::graphics.screen()->draw(image, x, y);
@@ -404,7 +404,7 @@ void BigHardMe(char plr, int x, int y, char hw, char unit, char sh)
         name[4] = '\x00';           // terminator
 
         std::string filename((boost::format("images/liftoff.abz.%1%.png") % name).str());
-        boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
+        std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage(filename));
 
         image->exportPalette(32, 2 + 63);
         display::graphics.screen()->draw(image, x, y);

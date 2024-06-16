@@ -778,7 +778,7 @@ void InjuredNautCenter(char plr, int sel)
         snprintf(filename, sizeof(filename), "images/cemetery.%d.png", plr);
     }
 
-    boost::shared_ptr<display::PalettizedSurface> location(Filesystem::readImage(filename));
+    std::shared_ptr<display::PalettizedSurface> location(Filesystem::readImage(filename));
     location->exportPalette(32, 255);
 
     display::graphics.screen()->clear();

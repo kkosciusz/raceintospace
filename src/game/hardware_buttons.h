@@ -1,7 +1,8 @@
 #ifndef HARDWARE_BUTTONS_H
 #define HARDWARE_BUTTONS_H
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
+
 #include "display/surface.h"
 
 class HardwareButtons
@@ -15,7 +16,7 @@ public:
 protected:
     void drawButton(int group, bool highlighted, display::Surface &target, int x, int y) const;
 
-    boost::shared_ptr<display::Surface> buttons;
+    std::shared_ptr<display::Surface> buttons;
     int _y;
 };
 

@@ -58,7 +58,7 @@ enum PreferencesMode {
 
 
 struct DisplayContext {
-    boost::shared_ptr<display::PalettizedSurface> prefs_image;
+    std::shared_ptr<display::PalettizedSurface> prefs_image;
 };
 
 void DrawPrefs(int where, char a1, char a2, AudioConfig audio,
@@ -313,7 +313,7 @@ void HModel(char mode, char tx)
     int image = (mode == 0 || mode == 1 || mode == 4) ? 1 : 0;
     snprintf(filename, sizeof(filename), "images/prfx.but.%d.png", image);
 
-    boost::shared_ptr<display::PalettizedSurface> prefsImage(
+    std::shared_ptr<display::PalettizedSurface> prefsImage(
         Filesystem::readImage(filename));
 
     // The loaded image versions have their own palettes, which are
@@ -488,7 +488,7 @@ int Preferences(int player, int where)
         Data->Def.Input = 2;  // Historical Model / Historical Roster
     }
 
-    boost::shared_ptr<display::PalettizedSurface> prefs_image(Filesystem::readImage("images/preferences.png"));
+    std::shared_ptr<display::PalettizedSurface> prefs_image(Filesystem::readImage("images/preferences.png"));
     dctx.prefs_image = prefs_image;
 
     DrawPrefs(where, hum1, hum2, audio, dctx);

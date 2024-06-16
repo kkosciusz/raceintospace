@@ -82,7 +82,7 @@ void display_text_in_box(int x, int y, int width, int height, const std::string 
 void pretty_crash(const std::string &title, const std::string &message)
 {
 
-    boost::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/error.png"));
+    std::shared_ptr<display::PalettizedSurface> image(Filesystem::readImage("images/error.png"));
 
     image->exportPalette();
     display::graphics.screen()->draw(image, 0, 0);

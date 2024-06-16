@@ -31,12 +31,10 @@
 
 #include "vab.h"
 
-#include <cassert>
-
 #include <algorithm>
+#include <cassert>
+#include <memory>
 #include <stdexcept>
-
-#include <boost/shared_ptr.hpp>
 
 #include "display/graphics.h"
 #include "display/surface.h"
@@ -139,7 +137,7 @@ enum VabSprite {
 
 
 void LoadMIVals();
-boost::shared_ptr<display::LegacySurface> LoadVABSprite(char plr);
+std::shared_ptr<display::LegacySurface> LoadVABSprite(char plr);
 int ChkDelVab(char plr, char f);
 bool ChkVabRkt(const Vehicle &rocket);
 void GradRect2(int x1, int y1, int x2, int y2, char plr);
@@ -203,17 +201,16 @@ void LoadMIVals()
  * \param plr  0 for the USA sprite, 1 for the USSR sprite.
  * \throws runtime_error  if Filesystem unable to load the sprite.
  */
-boost::shared_ptr<display::LegacySurface> LoadVABSprite(const char plr)
+std::shared_ptr<display::LegacySurface> LoadVABSprite(const char plr)
 {
-    boost::shared_ptr<display::LegacySurface> surface;
-
-    surface = boost::shared_ptr<display::LegacySurface>(new display::LegacySurface(display::graphics.WIDTH, display::graphics.HEIGHT));
+	const auto width = display::graphics.WIDTH;
+	const auto height = display::graphics.HEIGHT;
+    auto surface = std::make_shared<display::LegacySurface>(width, height);
 
     char filename[128];
     snprintf(filename, sizeof(filename), "images/vab.img.%d.png", plr);
 
-    boost::shared_ptr<display::PalettizedSurface> sprite(
-        Filesystem::readImage(filename));
+    const auto sprite = Filesystem::readImage(filename);
 
     surface->palette().copy_from(sprite->palette());
     surface->draw(sprite, 0, 0);
@@ -1097,7 +1094,7 @@ void VAB(char plr)
     int mis, weight;
     VehicleSelector rocketList(plr);
     char ButOn;
-    boost::shared_ptr<display::LegacySurface> hw;
+    std::shared_ptr<display::LegacySurface> hw;
 
     LoadMIVals();
     music_start(M_HARDWARE);

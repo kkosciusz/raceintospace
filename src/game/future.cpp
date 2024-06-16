@@ -120,7 +120,7 @@ bool FutureMissionOk(char plr, const MissionNavigator &nav, int mis);
  */
 void LoadFutureButtons(void)
 {
-    boost::shared_ptr<display::PalettizedSurface> console(
+    std::shared_ptr<display::PalettizedSurface> console(
         Filesystem::readImage("images/nfutbut.but.0.png"));
     vh->palette().copy_from(console->palette());
     vh->draw(console, 0, 0);
@@ -138,7 +138,7 @@ void LoadFuturePalette(void)
 {
     // May be done via fmin.img.0.png or nfutbut.but.0.png.
     {
-        boost::shared_ptr<display::PalettizedSurface> planets(
+        std::shared_ptr<display::PalettizedSurface> planets(
             Filesystem::readImage("images/fmin.img.0.png"));
         planets->exportPalette();
     }
@@ -300,7 +300,7 @@ void DrawFuture(char plr, int mis, char pad, MissionNavigator &nav)
  */
 void ClearDisplay(void)
 {
-    boost::shared_ptr<display::PalettizedSurface> background(Filesystem::readImage("images/fmin.img.0.png"));
+    std::shared_ptr<display::PalettizedSurface> background(Filesystem::readImage("images/fmin.img.0.png"));
 
     display::graphics.screen()->draw(background, 202, 48, 40, 35, 202, 48);
     display::graphics.screen()->draw(background, 17, 83, 225, 113, 17, 83);

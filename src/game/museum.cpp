@@ -133,7 +133,7 @@ void Display_ARROW(char num, int x, int y)
     snprintf(filename, sizeof(filename),
              "images/arrows.but.%d.png", (int) num);
 
-    boost::shared_ptr<display::PalettizedSurface> image(
+    std::shared_ptr<display::PalettizedSurface> image(
         Filesystem::readImage(filename));
 
     display::graphics.screen()->draw(image, x, y);

@@ -326,7 +326,7 @@ void draw_small_flag(char plr, int xm, int ym)
 {
     char fn[64];
     snprintf(fn, sizeof(fn), "images/small_flag.%i.png", (int)plr);
-    boost::shared_ptr<display::Surface> flag(Filesystem::readImage(fn));
+    std::shared_ptr<display::Surface> flag(Filesystem::readImage(fn));
     display::graphics.screen()->draw(flag, xm, ym);
 }
 
@@ -334,7 +334,7 @@ void draw_flag(int x, int y, char plr)
 {
     char fn[64];
     snprintf(fn, sizeof(fn), "images/flag.%i.png", (int)plr);
-    boost::shared_ptr<display::Surface> flag(Filesystem::readImage(fn));
+    std::shared_ptr<display::Surface> flag(Filesystem::readImage(fn));
     display::graphics.screen()->draw(flag, x, y);
 }
 

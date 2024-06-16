@@ -146,7 +146,7 @@ bool Filesystem::unlink(const std::string &filename)
     }
 }
 
-boost::shared_ptr<File> Filesystem::open(const std::string &filename)
+std::shared_ptr<File> Filesystem::open(const std::string &filename)
 {
     PHYSFS_File *file_handle = PHYSFS_openRead(filename.c_str());
 
@@ -154,11 +154,11 @@ boost::shared_ptr<File> Filesystem::open(const std::string &filename)
         throw_error_with_detail(filename);
     }
 
-    boost::shared_ptr<File> file_ptr(new File(file_handle));
+    std::shared_ptr<File> file_ptr(new File(file_handle));
     return file_ptr;
 }
 
-boost::shared_ptr<File> Filesystem::openWrite(const std::string &filename)
+std::shared_ptr<File> Filesystem::openWrite(const std::string &filename)
 {
     PHYSFS_File *file_handle = PHYSFS_openWrite(filename.c_str());
 
@@ -166,13 +166,13 @@ boost::shared_ptr<File> Filesystem::openWrite(const std::string &filename)
         throw_error_with_detail(filename);
     }
 
-    boost::shared_ptr<File> file_ptr(new File(file_handle));
+    std::shared_ptr<File> file_ptr(new File(file_handle));
     return file_ptr;
 }
 
 void Filesystem::readToBuffer(const std::string &filename, void *buffer, uint32_t length, uint32_t offset)
 {
-    boost::shared_ptr<File> file_ptr(open(filename));
+    std::shared_ptr<File> file_ptr(open(filename));
 
     if (offset) {
         file_ptr->seek(offset);
@@ -185,10 +185,10 @@ void Filesystem::readToBuffer(const std::string &filename, void *buffer, uint32_
     }
 }
 
-boost::shared_ptr<display::PalettizedSurface> Filesystem::readImage(const std::string &filename)
+std::shared_ptr<display::PalettizedSurface> Filesystem::readImage(const std::string &filename)
 {
     // open the file
-    boost::shared_ptr<File> file_ptr(open(filename));
+    std::shared_ptr<File> file_ptr(open(filename));
 
     // get its length, ensuring it's something we're okay with loading from the stack
     uint64_t length = file_ptr->length();
@@ -204,7 +204,7 @@ boost::shared_ptr<display::PalettizedSurface> Filesystem::readImage(const std::s
     }
 
     // construct a PNGImage from this buffer
-    boost::shared_ptr<display::PalettizedSurface> image(display::image::readPalettizedPNG(buffer, length));
+    std::shared_ptr<display::PalettizedSurface> image(display::image::readPalettizedPNG(buffer, length));
 
     delete[] buffer;
 
