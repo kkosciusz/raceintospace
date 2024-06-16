@@ -1,5 +1,6 @@
 {
   "dependencies": [
+    "boost-endian",
     "boost-format",
     "libpng",
     "zlib",
