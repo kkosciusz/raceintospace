@@ -22,11 +22,11 @@
 
 #include <cassert>
 #include <memory>
+#include <numeric>
 #include <stdexcept>
 #include <string>
 
 #include <boost/format.hpp>
-#include <boost/algorithm/string/join.hpp>
 
 #include "display/image.h"
 #include "display/graphics.h"
@@ -478,7 +478,11 @@ int Help(const char *FName)
     }
 
     AL_CALL = 1;
-    std::string str = boost::algorithm::join(Assets->help.at(i).description, "\r\n") + "\r\n";
+    const auto& description = Assets->help.at(i).description;
+    std::string str = std::accumulate(description.begin(), description.end(), std::string{},
+        [](const std::string& l, const std::string& r) {
+            return l + r + "\r\n";
+        });
     const char *Help = str.c_str();
 
     // Process entry
