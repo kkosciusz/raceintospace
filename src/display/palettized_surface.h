@@ -36,9 +36,8 @@ private:
 
 } // namespace display
 
-#include <boost/static_assert.hpp>
 // ensure we weren't included with modified structure packing
 // if this line explodes, move the display includes to the top
-BOOST_STATIC_ASSERT(sizeof(display::PalettizedSurface) % 4 == 0);
+static_assert(sizeof(display::PalettizedSurface) % 4 == 0);
 
 #endif // DISPLAY_PALETTIZED_SURFACE_H
