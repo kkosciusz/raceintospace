@@ -2,8 +2,6 @@
 
 #include <cassert>
 
-#include <boost/foreach.hpp>
-
 RosterGroup::RosterGroup(int player, int group_number, const Json::Value &json_object)
     : m_player(player), m_group_number(group_number)
 {
@@ -74,7 +72,7 @@ int RosterGroup::getNumberToChoose() const
 
 void RosterGroup::randomize()
 {
-    BOOST_FOREACH(RosterEntry & roster_entry, m_entries) {
+    for (auto& roster_entry : m_entries) {
         roster_entry.randomize();
     }
 }
