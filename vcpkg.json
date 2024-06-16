@@ -1,7 +1,7 @@
 {
   "dependencies": [
     "boost-endian",
-    "boost-format",
+    "fmt",
     "libpng",
     "zlib",
     "cereal",

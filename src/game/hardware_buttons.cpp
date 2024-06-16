@@ -2,7 +2,7 @@
 #include "filesystem.h"
 #include "draw.h"
 
-#include <boost/format.hpp>
+#include <fmt/core.h>
 
 namespace
 {
@@ -13,7 +13,7 @@ const int widths[] = { 67, 72, 72, 67 };
 
 HardwareButtons::HardwareButtons(int y, int player) :
     buttons(Filesystem::readImage(
-                (boost::format("images/hardware_buttons.%1%.png") % player).str()
+                fmt::format("images/hardware_buttons.{}.png", player)
             )),
     _y(y)
 {

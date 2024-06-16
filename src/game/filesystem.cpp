@@ -3,14 +3,12 @@
 #include <cassert>
 #include <stdexcept>
 
-#include <boost/format.hpp>
+#include <fmt/core.h>
 #include <physfs.h>
 
 #include "display/image.h"
 
 #include "raceintospace_config.h"
-
-using boost::format;
 
 #define throw_error do { \
     const char * error = PHYSFS_getLastError(); \
@@ -24,7 +22,7 @@ using boost::format;
     const char * error = PHYSFS_getLastError(); \
     if (error == NULL) \
         error = "unknown filesystem error"; \
-    std::string msg = (format("%1%: %2%") % error % detail).str(); \
+    std::string msg = fmt::format("{}: {}", error, detail); \
     throw std::runtime_error(msg); \
     } while (0)
 

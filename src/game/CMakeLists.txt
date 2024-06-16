@@ -96,6 +96,7 @@ find_package(jsoncpp REQUIRED)
 find_package(cereal REQUIRED)
 find_package(Boost REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(fmt REQUIRED)
 
 # vcpkg only works with CONFIG
 find_package(PhysFS CONFIG QUIET)
@@ -113,6 +114,7 @@ set(game_libraries
   JsonCpp::JsonCpp
   "$<IF:$<TARGET_EXISTS:PhysFS::PhysFS>,PhysFS::PhysFS,${physfs_library}>"
   ZLIB::ZLIB
+  fmt::fmt
   raceintospace_display
   raceintospace_protobuf
   )
